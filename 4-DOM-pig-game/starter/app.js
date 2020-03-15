@@ -18,7 +18,7 @@ Change the game to follow these rules:
 3. Add another dice to the game, so that there are two dices now. The player looses his current score when one of them is a 1. (Hint: you will need CSS to position the second dice, so take a look at the CSS code for the first one.)
 */
 
-var scores, roundScore, activePlayer, gamePlaying, previousRoll;
+var scores, roundScore, activePlayer, gamePlaying, previousRoll, winningScore;
 
 init();
 
@@ -39,6 +39,7 @@ function init() {
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
+    winningScore = document.getElementById('winning-score').value;
 }
 
 function nextPlayer() {
@@ -92,7 +93,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
     // 3. Check if player won the game
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= winningScore) {
         document.getElementById('name-' + activePlayer).textContent = 'Winner!';
         document.querySelector('.dice').style.display = 'none';
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
