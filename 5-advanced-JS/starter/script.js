@@ -165,7 +165,7 @@ function game() {
 }
 game();
 */
-
+/*
 (function() {
   var score = Math.random() * 10;
   console.log(score >= 5);
@@ -175,3 +175,24 @@ game();
   var score = Math.random() * 10;
   console.log(score >= 5 - goodLuck);
 })(5);
+*/
+
+///////////////////////
+// Lecture: Closures
+
+function retirement(retirementAge) {
+  var a = ' years left until retirement.';
+  return function(yearOfBirth) {
+    var age = 2020 - yearOfBirth;
+    console.log((retirementAge - age) + a);
+  };
+}
+
+var retirementUS = retirement(66);
+var retirementGermany = retirement(65);
+var retirementIceland = retirement(67);
+
+retirementUS(1992);
+retirementGermany(1992);
+retirementIceland(1992);
+// retirement(66)(1992);
